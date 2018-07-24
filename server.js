@@ -60,6 +60,20 @@ app.delete('/todos/:id', function (req, res) {
 	}
 });
 
+// GET /todos?completed=true
+app.get('/todos', function (req, res) {
+	var queryParams = req.query;
+	var filteredTodos = todos;
+
+	if (queryParams.hasOwnProperty('completed') && queryParams.completed === 'true') {
+		filteredTodos = _.where(filteredTodos, {completed: true});
+	} else if (queryParams.hasOwnProperty('completed') && queryParams.completed === 'false') {
+		filteredTodos = _.where(filteredTodos, {completed: false});
+	}
+
+	res.json(filteredTodos);
+});
+
 // PUT /todos/:id
 app.put('/todos/:id', function (req, res) {
 	var todoId = parseInt(req.params.id, 10);
