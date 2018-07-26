@@ -128,7 +128,7 @@ app.post('/users', function (req, res) {
 });
 
 // POST /users/login
-app.post('/users/login', function (req, res) {
+app.post('/user/login', function (req, res) {
 	var body = _.pick(req.body, 'email', 'password');
 
 	if (typeof body.email !== 'string' || typeof body.password !== 'string') {
@@ -140,6 +140,7 @@ app.post('/users/login', function (req, res) {
 			email: body.email
 		}
 	}).then(function (user) {
+		
 		if (!user || !bcrypt.compareSync(body.password, user.get('password_hash'))) {
 			return res.status(401).send();
 		}
