@@ -117,7 +117,7 @@ app.put('/todos/:id', function(req, res) {
 	});
 });
 
-app.post('/users', function (req, res) {
+app.post('/user', function (req, res) {
 	var body = _.pick(req.body, 'email', 'password');
 
 	db.user.create(body).then(function (user) {
