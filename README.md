@@ -1,4 +1,4 @@
 # Todo-api
 
-Learning The Complete Node.js Developer Course on Udemy.
+Learning Andrew Meade's The Complete Node.js Developer Course on Udemy.
 
