@@ -3,8 +3,6 @@ var _ = require('underscore');
 var cryptojs = require('crypto-js');
 var jwt = require('jsonwebtoken');
 
-
-
 module.exports = (sequelize, DataTypes) => {
 	var user =  sequelize.define('user', {
 		email: {
