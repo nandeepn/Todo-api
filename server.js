@@ -68,7 +68,9 @@ app.get('/todos/:id', middleware.requireAuthentication, function(req, res) {
 // POST /todos
 app.post('/todos', middleware.requireAuthentication, function(req, res) {
 	var body = _.pick(req.body, 'description', 'completed');
-
+    if (middleware.requireAuthentication) {
+		console.log(' Authenticated');
+	}
 	db.todo.create(body).then(function(todo) {
 		req.user.addTodo(todo).then(function () {
 			return todo.reload();

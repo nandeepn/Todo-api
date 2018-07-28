@@ -12,13 +12,10 @@ module.exports = function (db) {
 				}
 			}).then(function (tokenInstance) {
 				if (!tokenInstance) {
-					console.log(' ERROR throw!');
 					throw new Error();
 				}
+
 				req.token = tokenInstance;
-				if (tokenInstance) {
-					console.log(' Works!');
-				}
 				return db.user.findByToken(token);
 			}).then(function (user) {
 				req.user = user;
